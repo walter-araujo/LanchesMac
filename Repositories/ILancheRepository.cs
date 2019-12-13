@@ -1,4 +1,4 @@
-﻿using LanchesWsa.Models;
+﻿using LanchesMac.Models;
 using System.Collections.Generic;
 
 namespace LanchesMac.Repositories
