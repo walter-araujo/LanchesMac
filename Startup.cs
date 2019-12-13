@@ -32,6 +32,9 @@ namespace LanchesMac
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             );
 
+            services.AddDistributedMemoryCache();
+            services.AddSession();
+
             //registro os objetos do Repositories como serviço para serem criados quando forem necessários.
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<ILancheRepository, LancheRepository>();
@@ -64,6 +67,9 @@ namespace LanchesMac
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            app.UseSession();
+
         }
     }
 }
