@@ -11,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.AspNetCore.Http;
+using LanchesMac.Models;
 
 namespace LanchesMac
 {
@@ -38,6 +40,8 @@ namespace LanchesMac
             //registro os objetos do Repositories como serviço para serem criados quando forem necessários.
             services.AddTransient<ICategoriaRepository, CategoriaRepository>();
             services.AddTransient<ILancheRepository, LancheRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(cp => CarrinhoCompra.GetCarrinho(cp));
 
         }
 
@@ -57,6 +61,8 @@ namespace LanchesMac
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
+
             app.UseRouting();
 
             app.UseAuthorization();
@@ -68,7 +74,7 @@ namespace LanchesMac
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.UseSession();
+            
 
         }
     }
