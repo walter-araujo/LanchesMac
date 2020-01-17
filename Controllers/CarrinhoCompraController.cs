@@ -34,7 +34,7 @@ namespace LanchesMac.Controllers
             return View(carrinhoCompraViewModel);
         }
 
-        public RedirectToActionResult adicionarItem(int lancheId)
+        public RedirectToActionResult AdicionarItem(int lancheId)
         {
             var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
 
@@ -47,7 +47,7 @@ namespace LanchesMac.Controllers
 
         }
 
-        public RedirectToActionResult removerItem(int lancheId)
+        public RedirectToActionResult RemoverItem(int lancheId)
         {
             var lancheSelecionado = _lancheRepository.Lanches.FirstOrDefault(p => p.LancheId == lancheId);
 
