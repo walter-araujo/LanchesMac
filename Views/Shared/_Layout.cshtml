@@ -6,7 +6,6 @@
     <title>@ViewData["Title"] - LanchesMac</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/fontawesome.min.css">
 </head>
 <body>
     <header>
@@ -28,6 +27,11 @@
                         </li>
                         @await Component.InvokeAsync("CarrinhoCompraResumo")
                     </ul>
+                    <form class="navbar-nav" asp-controller="Lanche" asp-action="Search" method="get">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Procurar Lanche" name="searchString" value="@ViewData["searchString"]" />
+                        </div>
+                    </form>
                 </div>
             </div>
         </nav>

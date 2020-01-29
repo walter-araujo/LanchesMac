@@ -21,7 +21,10 @@ namespace LanchesMac.Repositories
         public void CriarPedido(Pedido pedido)
         {
             pedido.PedidoEnviado = DateTime.Now;
+
             _appDbContext.Pedidos.Add(pedido);
+
+            _appDbContext.SaveChanges();
 
             var CarrinhoCompraItens = _carrinhoCompra.CarrinhoCompraItens;
 
@@ -36,6 +39,7 @@ namespace LanchesMac.Repositories
                 };
                 _appDbContext.PedidoDetalhes.Add(pedidoDetalhe);
             }
+
             _appDbContext.SaveChanges();
         }
     }

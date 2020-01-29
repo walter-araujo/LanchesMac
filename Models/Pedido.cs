@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace LanchesMac.Models
 {
+    
     public class Pedido
-    {
-        [BindNever] //Para não vincular o PedidoId no formulário
+    {        
         public int PedidoId { get; set; }
 
         //para criar um relacionamento com a tabela de detalhes do pedido
@@ -21,7 +19,7 @@ namespace LanchesMac.Models
         public string Nome { get; set; }
 
         [Required(ErrorMessage ="Informe o Sobrenome")]
-        [Display(Name ="SobreNome")]
+        [Display(Name ="Sobrenome")]
         [StringLength(50)]
         public string Sobrenome { get; set; }
 
