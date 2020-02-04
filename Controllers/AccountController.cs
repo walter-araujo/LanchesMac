@@ -19,6 +19,7 @@ namespace LanchesMac.Controllers
             _signInManager = signInManager;
         }
 
+        [HttpGet]
         public IActionResult Login(string returnUrl)
         {            
             return View(new LoginViewModel()
@@ -27,6 +28,7 @@ namespace LanchesMac.Controllers
             });
         }
 
+        [HttpPost]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid)
