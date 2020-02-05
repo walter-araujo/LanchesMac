@@ -64,11 +64,20 @@ namespace LanchesMac.Models
 
         [BindNever]
         [ScaffoldColumn(false)] //não exibir no formulario
+        [Display(Name = "Valor Total do Pedido")]
         public decimal PedidoTotal { get; set; }
 
-        [BindNever]
-        [ScaffoldColumn(false)] //não exibir no formulario
-        public DateTime PedidoEnviado { get; set; }
+        //[BindNever]
+        //[ScaffoldColumn(false)] //não exibir no formulario
+        [Display(Name = "Data/Hora do Envio do Pedido")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0: dd/MM/yyyy hh:mm}")]
+        public DateTime? PedidoEnviado { get; set; }
+
+        [Display(Name ="Data/Hora da Entrega do Pedido")]
+        [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString ="{0: dd/MM/yyyy hh:mm}")]
+        public DateTime? PedidoEntregueEm { get; set; }
 
     }
 }

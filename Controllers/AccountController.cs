@@ -45,9 +45,16 @@ namespace LanchesMac.Controllers
 
                     return RedirectToAction(loginVM.ReturnUrl);
                 }
+                else
+                {
+                    ModelState.AddModelError("Password", "Senha inválida!");
+                }
             }
-
-            ModelState.AddModelError("", "Usuário/Senha inválido ou não localizado!");
+            else
+            {
+                ModelState.AddModelError("Password", "Usuário inválido ou não localizado!");
+            }
+            
             return View(loginVM);
         }
 

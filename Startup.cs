@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using LanchesMac.Models;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LanchesMac
 {
@@ -74,12 +75,17 @@ namespace LanchesMac
             app.UseAuthentication();
             app.UseRouting();
             app.UseAuthorization();
-
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
+                    name: "admin",
+                    pattern: "{area}/{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
+
             });
 
             
