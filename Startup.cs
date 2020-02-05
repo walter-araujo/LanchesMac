@@ -40,6 +40,8 @@ namespace LanchesMac
                 .AddEntityFrameworkStores<AppDbContext>()
                 .AddDefaultTokenProviders();
 
+            services.ConfigureApplicationCookie(options => options.AccessDeniedPath = "Home/AcessDenied");
+
             services.AddDistributedMemoryCache();
             services.AddSession();
 

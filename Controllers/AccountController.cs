@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using LanchesMac.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -71,19 +72,34 @@ namespace LanchesMac.Controllers
             {
                 var user = new IdentityUser() { UserName = registroVM.UserName };
                 var result = await _userManager.CreateAsync(user, registroVM.Password);
+
+                //if (result.Succeeded)
+                //    return RedirectToAction("Index", "Home");
+
                 if (result.Succeeded)
-                    return RedirectToAction("Index", "Home");
+                {
+                    //adiciona o usuário padrão ao perfil Member
+                    await _userManager.AddToRoleAsync(user, "Member");
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+
+                    return RedirectToAction("LoggedIn", "Account");
+                }
             }
 
             return View(registroVM);
         }
 
-        [HttpPost]        
+        public ViewResult LoggedIn() => View();
+
+        [HttpPost]  
+        [Authorize]
         public async Task<IActionResult> LogOut()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
+
+
 
     }
 }
