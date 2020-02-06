@@ -21,6 +21,7 @@ namespace LanchesMac.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Login(string returnUrl)
         {            
             return View(new LoginViewModel()
@@ -41,10 +42,10 @@ namespace LanchesMac.Controllers
                 var result = await _signInManager.PasswordSignInAsync(user, loginVM.Password, false, false);
                 if (result.Succeeded)
                 {
-                    if (string.IsNullOrEmpty(loginVM.ReturnUrl))
+                    if (!string.IsNullOrEmpty(loginVM.ReturnUrl) && Url.IsLocalUrl(loginVM.ReturnUrl))
+                        return RedirectToAction(loginVM.ReturnUrl);
+                    else
                         return RedirectToAction("Index", "Home");
-
-                    return RedirectToAction(loginVM.ReturnUrl);
                 }
                 else
                 {

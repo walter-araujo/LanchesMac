@@ -3,7 +3,7 @@
 @if (Model.CarrinhoCompra.CarrinhoCompraItens.Count > 0)
 {
     <li>
-        <a asp-controller="CarrinhoCompra">
+        <a asp-controller="CarrinhoCompra" asp-action="Index">
             <span class="fa fa-cart-plus"></span>
             <span id="cart-status">
                 @Model.CarrinhoCompra.CarrinhoCompraItens.Count
