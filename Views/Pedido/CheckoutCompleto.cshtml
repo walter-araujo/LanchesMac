@@ -1,4 +1,5 @@
-﻿
+﻿@model Pedido
+<br />
 @{
     ViewData["Title"] = "CheckoutCompleto";
 }
@@ -8,5 +9,22 @@
     <div class="jumbotron">
         <h2>@ViewBag.CheckoutCompletoMsg</h2>
     </div>
+    <div class="card">
+        <div class="card-body">
+            <p>Cliente: <strong>@Model.Nome  </strong></p>
+            <p>Data do Pedido: <strong> @Model.PedidoEnviado </strong></p>
+            <p>Número do Pedido: <strong> @Model.PedidoId </strong></p>
+            <br />
+            @foreach(var item in Model.PedidoItens)
+            {
+                <img src = "@item.Lanche.ImagemUrl" width="40" height="40" />
+                <ul> @item.Lanche.Nome</ul>
+                <ul> @item.Quantidade</ul>
+                <ul> @item.Preco </ul>
+            }
+            <p>Valor Total: <strong> @(((decimal)ViewBag.TotalPedido).ToString("C2")) </strong></p>
+        </div>
+    </div>
+
 </div>
 
