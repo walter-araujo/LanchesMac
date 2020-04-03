@@ -5,10 +5,9 @@
         <td><img src="~/images/login1.jpg" alt="Fazer o Login" class="center-block" /></td>
         <td>
             <div class="row loginForm">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Faça o login e peça o seu lanche.</h2>
+                <div class="col-md-12">
+                    <h4>Informe as credenciais do usuário</h4>
                     <form asp-controller="Account" asp-action="Login" method="post" class="form-horizontal" role="form">
-                        <h4>Informe o nome do usuário e a senha</h4>
                         <hr />
                         <input type="hidden" asp-for="ReturnUrl" />
                         <div class="form-group">
@@ -26,8 +25,7 @@
                                 <span asp-validation-for="Password" class="text-danger"></span>
                             </div>
                         </div>
-
-                        <div class="form-group pull-right formPullRightButton">
+                        <div class="form-group formPullRightButton">
                             <div class="col-md-offset-2 col-md-10">
                                 <input type="submit" class="btn btn-success" value="Log in" />
                             </div>
@@ -38,7 +36,3 @@
         </td>
     </tr>
 </table>
-
-
-
-

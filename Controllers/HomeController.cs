@@ -26,7 +26,7 @@ namespace LanchesMac.Controllers
         {
             var homeViewModel = new HomeViewModel
             {
-                lanchesPreferidos = _lancheRepository.LanchesPreferidos
+                LanchesPreferidos = _lancheRepository.LanchesPreferidos
             }                            ;
 
             return View(homeViewModel);

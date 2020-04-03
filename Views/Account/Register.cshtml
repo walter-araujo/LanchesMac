@@ -1,14 +1,12 @@
 ﻿@model LoginViewModel
-
 <table>
     <tr>
         <td><img src="~/images/registro1.jpg" alt="Registrar Usuário" class="center-block" /></td>
         <td>
             <div class="row loginForm">
-                <div class="col-md-8 col-md-offset-2">
-                    <h2>Registrar usuário</h2>
+                <div class="col-md-12">
+                    <h4>Registrar usuário</h4>
                     <form asp-controller="Account" asp-action="Register" method="post" class="form-horizontal" role="form">
-                        <h4>Crie a sua conta e faça logo o pedido do seu lanche!</h4>
                         <hr />
                         <div class="form-group">
                             <label asp-for="UserName" class="col-md-2 control-label"></label>
@@ -35,4 +33,3 @@
         </td>
     </tr>
 </table>
-

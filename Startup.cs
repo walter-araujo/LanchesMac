@@ -73,16 +73,21 @@ namespace LanchesMac
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSession();
-            app.UseAuthentication();
+            app.UseSession();            
             app.UseRouting();
+            app.UseAuthentication();
             app.UseAuthorization();
             
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "admin",
-                    pattern: "{area}/{controller=Admin}/{action=Index}/{id?}");
+                    pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}");
+
+                endpoints.MapControllerRoute(
+                    name: "categoriaFiltro",
+                    pattern: "Lanche/{action}/{categoria?}",
+                    defaults: new { Controller = "Lanche", action = "List"});
 
                 endpoints.MapControllerRoute(
                     name: "default",

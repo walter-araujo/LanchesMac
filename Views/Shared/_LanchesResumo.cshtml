@@ -1,22 +1,20 @@
-﻿
-<div class="col-lg-4 col-xl-4 col-md-4 col-sm-4 ">
-    <div class="img-thumbnail">
-        <img src="@Model.ImagemThumbnailUrl" class="rounded" alt="" />
-    </div>
-    <div class="figure-caption">
-        <h3 class="float-right">
-            @Model.Preco.ToString("c")
-        </h3>
-        <h4>
-            <a asp-controller="Lanche" asp-action="Details" asp-route-lancheId="@Model.LancheId">@Model.Nome</a>            
-        </h4>
-        <p>@Model.DescricaoCurta</p>
-    </div>
-    <div class="addToCart text-right">
-        <p class="button ">
-            <a class="btn btn-primary" id="cartButton" asp-controller="CarrinhoCompra" asp-action="AdicionarItem" asp-route-lancheId="@Model.LancheId">
-                Inluir no Carrinho
-            </a>
-        </p>
-    </div>
-</div>
+﻿@model Lanche
+
+   
+        <div class="col-md-4 col-sm-4 col-lg-4">
+            <img src="@Model.ImagemUrl" class="card-img-top imageLanche" alt="@Model.Nome" />
+            <div class="figure-caption">
+                <h4 class="formPullRightButton">@Model.Preco.ToString("c")</h4>
+                <h4>
+                    <a asp-controller="Lanche" asp-action="Details" asp-route-lancheId="@Model.LancheId">@Model.Nome</a>
+                </h4>
+                <h6>@Model.DescricaoCurta</h6>
+            </div>
+            <div text-right">
+                <p class="formPullRightButton">
+                    <a class="btn btn-primary" asp-controller="CarrinhoCompra" asp-action="AdicionarItemNoCarrinhoCompra" asp-route-lancheId="@Model.LancheId">
+                        Incluir no Carrinho
+                    </a>
+                </p>
+            </div>
+        </div>
